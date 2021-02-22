@@ -1,0 +1,12 @@
+d1 = input('Digite algo: ')
+print(type(d1))
+print('{} é numérico?'.format(d1), d1.isnumeric())
+print('É alfabético?',d1.isalpha())
+print('É alfanumérico?', d1.isalnum())
+print('É minúsculo?', d1.islower())
+print('Esta em ascii?', d1.isascii())
+print('É espaço?', d1.isspace())
+print('Esta maiúsculo?', d1.isupper())
+print('É um título?', d1.istitle())
+print('É identificável?', d1.isidentifier())
+

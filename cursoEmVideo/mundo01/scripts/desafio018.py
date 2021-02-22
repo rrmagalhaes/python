@@ -1,0 +1,12 @@
+from math import sin, cos, tan, radians
+print('-' * 50)
+ang = float(input('Digite o valor de um ângulo: '))
+s = sin(radians(ang))
+c = cos(radians(ang))
+t = tan(radians(ang))
+print('-' * 50)
+print('Para um ângulo de {}º temos os seguintes valores abaixo:'.format(ang))
+print('{:.2f} para o valor do SENO;'.format(s))
+print('{:.2f} para o valor do COSSENO;'.format(c))
+print('{:.2f} para o valor da TANGENTE.'.format(t))
+print('-' * 50)
