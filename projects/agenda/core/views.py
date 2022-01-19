@@ -3,6 +3,12 @@ from core.models import Evento
 
 # Create your views here.
 
-def events(request, titulo_evento):
-    titulo = Evento.objects.get(titulo=titulo_evento)
-    return HttpResponse(f'<h1>{titulo}</h1>')
+#def index(requests):
+#    return redirect('/agenda') # Necessita importar render/redirect
+
+def lista_eventos(request):
+    usuario = request.user
+    evento = Evento.objects.all()
+    #evento = Evento.objects.filter(usuario=usuario)
+    dados = { 'eventos': evento }
+    return render(request, 'agenda.html', dados)
