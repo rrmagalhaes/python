@@ -1,6 +1,9 @@
 {% extends "model_page.html" %}
 {% block content %}
     <h1>Agendamentos</h1>
+    <a href="evento/">
+        <button type="button">Novo Evento</button>
+    </a>
 
     <ul>
         {% for evento in eventos %}
