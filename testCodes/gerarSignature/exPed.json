@@ -1,0 +1,34 @@
+{
+  "CpfCnpj": "02733105345",
+  "CodigoOperacao": "500",
+  "Data": "2022-02-10T15:00:00",
+  "Produtos": [
+    {
+      "Codigo": "1",
+      "CodigoCor": null,
+      "CodigoTamanho": null,
+      "Quantidade": 1.0000,
+      "PrecoUnitario": 100.34,
+      "DescontoUnitario": 0.00
+    }
+  ],
+  "Recebimentos": [
+    {
+      "ValorParcelas": 100.34,
+      "Tipo": "CR"
+    }
+  ],
+  "DadosEntrega": {
+    "Valor": 10.00,
+    "NaoSomarFreteTotalNota": true,
+    "OutroEndereco": {
+      "Cep": "82600380",
+      "Endereco": "Rua Nunia",
+      "Numero": "11",
+      "Complemento": null,
+      "Bairro": "Teste",
+      "Cidade": "Curitiba",
+      "Uf": "PR"
+    }
+  }
+}
