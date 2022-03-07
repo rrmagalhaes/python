@@ -37,14 +37,20 @@ def lista_eventos(request):
     usuario = request.user
     #evento = Evento.objects.all()
     data_atual = datetime.now() - timedelta(hours=3)
-    evento = Evento.objects.filter(usuario=usuario,
+    try:
+        evento = Evento.objects.filter(usuario=usuario,
                                    data_evento__gt=data_atual)
+    except Exception:
+        raise Http404
     dados = { 'eventos': evento }
     return render(request, 'agenda.html', dados)
 
 @login_required(login_url='/login/')
 def evento(request):
-    id_evento = request.GET.get('id')
+    try:
+        id_evento = request.GET.get('id')
+    except Exception:
+        raise Http404
     dados = {}
     if id_evento:
         dados['evento'] = Evento.objects.get(id=id_evento)
@@ -60,7 +66,10 @@ def submit_evento(request):
         usuario = request.user
         id_evento = request.POST.get('id_evento')
         if id_evento:
-            evento = Evento.objects.get(id=id_evento)
+            try:
+                evento = Evento.objects.get(id=id_evento)
+            except Exception:
+                raise Http404
             if evento.usuario == usuario:
                 evento.titulo = titulo
                 evento.descricao = descricao
@@ -96,5 +105,22 @@ def delete_evento(request, id_evento):
 def json_lista_eventos(request, id_usuario):
     usuario = User.objects.get(id=id_usuario)
     #evento = Evento.objects.all()
-    evento = Evento.objects.filter(usuario=usuario).values('id', 'titulo')
+    try:
+        evento = Evento.objects.filter(usuario=usuario).values('id', 'titulo')
+    except Exception:
+        raise Http404
     return JsonResponse(list(evento), safe=False)
+
+@login_required(login_url='/login/')
+def lista_eventos_historico(request):
+    usuario = request.user
+
+    #evento = Evento.objects.all()
+    data_atual = datetime.now()
+    try:
+        evento = Evento.objects.filter(usuario=usuario,
+                                   data_evento__lt=data_atual)
+    except Exception:
+        raise Http404
+    dados = { 'eventos': evento }
+    return render(request, 'historico.html', dados)

@@ -10,6 +10,9 @@
             <li>
                 <div style={% if evento.get_evento_atrasado %}
                             "color:red"
+                            {% endif %}
+                            {% if evento.get_evento_proximo %}
+                            "color:orange"
                             {% endif %}>
                     <b>{{ evento.titulo }} - {{ evento.get_data_evento }} </b>
                     (<a href="evento/?id={{ evento.id }}">Editar</a>
@@ -22,4 +25,8 @@
             </li>
         {% endfor %}
     </ul>
+
+    <a href="historico/">
+        <button type="button">Histórico</button>
+    </a>
 {% endblock %}
